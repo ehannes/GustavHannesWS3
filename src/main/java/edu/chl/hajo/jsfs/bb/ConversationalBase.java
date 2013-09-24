@@ -1,6 +1,6 @@
 package edu.chl.hajo.jsfs.bb;
 
-import edu.chl.hajo.jsfs.mb.Shop;
+import edu.chl.hajo.jsfs.mb.ShopBean;
 import edu.chl.hajo.shop.core.IProductCatalogue;
 import edu.chl.hajo.shop.core.Product;
 import java.io.Serializable;
@@ -19,7 +19,7 @@ public abstract class ConversationalBase implements Serializable {
     private Long id;
     private String name;
     private String price;
-    private Shop shop = Shop.INSTANCE;
+    private ShopBean shop = ShopBean.INSTANCE;
     @Inject
     private Conversation conversation;
 

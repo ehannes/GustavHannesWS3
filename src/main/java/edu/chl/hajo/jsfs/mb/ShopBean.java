@@ -15,12 +15,12 @@ import edu.chl.hajo.shop.core.ShopFactory;
  */
 
 
-public enum Shop {
-    INSTANCE;
+public class ShopBean {
+    public static ShopBean INSTANCE;
     
     private final IShop s;
 
-    private Shop() {
+    private ShopBean() {
         s = ShopFactory.getShop(true);
     }
 
