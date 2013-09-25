@@ -14,17 +14,17 @@
                 <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Id" />
-                        <h:inputText id="id" value="#{deleteProduct.id}" disabled="true"/>
+                        <h:outputText id="id" value="#{delProduct.id}"/>
                         <h:message for="id" />
                         <h:outputText value="Name" />
-                        <h:inputText id="name" value="#{deleteProduct.name}" disabled="true"/>
+                        <h:outputText id="name" value="#{delProduct.name}"/>
                         <h:message for="name" />
                         <h:outputText value="Price" />
-                        <h:inputText id="price" value="#{deleteProduct.price}" disabled="true"/>
+                        <h:outputText id="price" value="#{delProduct.price}"/>
                         <h:message for="price" />
                     </h:panelGrid>
                     <h:button outcome="products" value="Cancel"/>                   
-                    <h:commandButton action="#{deleteProduct.delete}" value="Delete" />
+                    <h:commandButton action="#{delProduct.actOnSelected}" value="Delete" />
                 </h:form>
             </ui:define>
         </ui:composition>

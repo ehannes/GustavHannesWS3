@@ -7,6 +7,7 @@ package edu.chl.hajo.jsfs.mb;
 import edu.chl.hajo.shop.core.IProductCatalogue;
 import edu.chl.hajo.shop.core.IShop;
 import edu.chl.hajo.shop.core.ShopFactory;
+import javax.inject.Singleton;
 
 
 /**
@@ -14,11 +15,9 @@ import edu.chl.hajo.shop.core.ShopFactory;
  * @author hajo
  */
 
-
+@Singleton
 public class ShopBean {
-    public static ShopBean INSTANCE;
-    
-    private final IShop s;
+    private final transient IShop s;
 
     private ShopBean() {
         s = ShopFactory.getShop(true);

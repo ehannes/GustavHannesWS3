@@ -4,7 +4,8 @@
  */
 package edu.chl.hajo.jsfs.bb;
 
-import javax.enterprise.context.RequestScoped;
+import edu.chl.hajo.shop.core.Product;
+import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
 /**
@@ -12,16 +13,13 @@ import javax.inject.Named;
  * @author hannes
  */
 @Named("editProduct")
-@RequestScoped
+@ConversationScoped
 public class EditProductBB extends ConversationalBase {
-
-    public String edit(){
-        return null;
-    }
     
     @Override
     protected void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Product p = new Product(getId(), getName(), Double.parseDouble(getPrice()));
+        getProductCatalogue().update(p);
     }
     
 }

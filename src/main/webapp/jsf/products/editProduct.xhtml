@@ -14,7 +14,7 @@
                 <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Id" />
-                        <h:inputText id="id" value="#{editProduct.id}" disabled="true"/>
+                        <h:outputText id="id" value="#{editProduct.id}"/>
                         <h:message for="id" />
                         <h:outputText value="Name" />
                         <h:inputText id="name" value="#{editProduct.name}"/>
@@ -24,7 +24,7 @@
                         <h:message for="price" />
                     </h:panelGrid>
                     <h:button outcome="products" value="Cancel"/>                   
-                    <h:commandButton action="#{editProduct.save}" value="Edit" />
+                    <h:commandButton action="#{editProduct.actOnSelected}" value="Edit" />
                 </h:form>
             </ui:define>
         </ui:composition>

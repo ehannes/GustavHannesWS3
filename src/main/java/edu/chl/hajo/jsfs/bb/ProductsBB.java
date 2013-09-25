@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -24,7 +25,8 @@ import javax.inject.Named;
 public class ProductsBB implements Serializable{
 
     private ContainerNavigator cn;
-    private ShopBean shop = ShopBean.INSTANCE;
+    @Inject
+    private transient ShopBean shop;
 
     @PostConstruct
     public void post() {

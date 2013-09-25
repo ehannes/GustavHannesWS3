@@ -9,6 +9,10 @@ import java.util.logging.Logger;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.Conversation;
 import javax.inject.Inject;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Common code for delete and edit (which uses conversational scope) 
@@ -17,9 +21,19 @@ import javax.inject.Inject;
 public abstract class ConversationalBase implements Serializable {
 
     private Long id;
+
+    @NotNull(message="{common.notEmpty}")
+    @Size(min=4, max=20, message="{product.name}")
     private String name;
+    
+    @NotNull(message="{common.notEmpty}")
+    @Min(value=0, message = "{product.price}")
+    @Max(value=100000, message = "{product.price}")
     private String price;
-    private ShopBean shop = ShopBean.INSTANCE;
+    
+    @Inject
+    private transient ShopBean shop;
+    
     @Inject
     private Conversation conversation;
 
@@ -40,6 +54,7 @@ public abstract class ConversationalBase implements Serializable {
     public void destroy() {
         if (!conversation.isTransient()) {
             conversation.end();
+            conversation.end();
         }
     }
 
@@ -48,7 +63,7 @@ public abstract class ConversationalBase implements Serializable {
             conversation.end();
         }
         execute();
-        return "";
+        return Navigation.PRODUCT_SUCCESS.toString();
     }
 
     // Implemented by subclasses
